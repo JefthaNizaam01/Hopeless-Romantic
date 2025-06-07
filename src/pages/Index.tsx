@@ -105,32 +105,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Animated Background */}
+      {/* Soft Romantic Background */}
       <div className="fixed inset-0 particle-bg">
-        <div className="absolute inset-0 aurora-gradient opacity-20"></div>
+        <div className="absolute inset-0 poetry-gradient opacity-30"></div>
       </div>
 
-      {/* Premium Header */}
-      <div className="sticky top-0 z-50 glass-strong backdrop-blur-xl border-b border-white/20">
+      {/* Elegant Header */}
+      <div className="sticky top-0 z-50 glass-strong backdrop-blur-xl border-b border-white/30">
         <div className="flex items-center justify-between p-4">
           <div className="flex items-center space-x-3">
             <div className="relative pulse-ring">
-              <Heart className="w-8 h-8 text-romance-500 animate-heart-beat fill-current" />
+              <Heart className="w-8 h-8 text-sunset-500 animate-heart-beat fill-current" />
             </div>
             <div>
               <h1 className="text-2xl font-script font-bold text-shimmer">Hopeless Romantic</h1>
-              <p className="text-xs text-romance-600 opacity-80">Good {timeOfDay}, find your soulmate</p>
+              <p className="text-xs text-sunset-600 opacity-80">Good {timeOfDay}, find your soulmate</p>
             </div>
           </div>
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="glass rounded-full p-2 neon-glow">
-              <Crown className="w-5 h-5 text-yellow-400" />
+            <Button variant="ghost" size="sm" className="glass rounded-full p-2 warm-glow">
+              <Crown className="w-5 h-5 text-golden-500" />
             </Button>
             <Button variant="ghost" size="sm" className="glass rounded-full p-2">
-              <Settings className="w-5 h-5 text-romance-600" />
+              <Settings className="w-5 h-5 text-sunset-600" />
             </Button>
             <Button variant="ghost" size="sm" className="glass rounded-full p-2">
-              <Zap className="w-5 h-5 text-purple-400" />
+              <Zap className="w-5 h-5 text-poetry-400" />
             </Button>
           </div>
         </div>
@@ -139,20 +139,20 @@ const Index = () => {
       {/* Main Content */}
       <div className="flex-1 p-4 pb-20 relative z-10">
         <div className="max-w-sm mx-auto">
-          {/* Enhanced Daily Quote Card */}
-          <Card className="mb-6 glass-strong premium-shadow floating-card gradient-border particle-bg">
+          {/* Poetic Daily Quote Card */}
+          <Card className="mb-6 glass-strong soft-shadow floating-card gradient-border particle-bg">
             <div className="p-5">
               <div className="flex items-center space-x-2 mb-3">
-                <BookOpen className="w-5 h-5 text-romance-600 animate-float" />
-                <span className="text-sm font-bold text-romance-700">Daily Love Inspiration</span>
-                <Sparkles className="w-4 h-4 text-yellow-400 animate-sparkle" />
+                <BookOpen className="w-5 h-5 text-sunset-600 animate-float" />
+                <span className="text-sm font-bold text-sunset-700">Daily Love Inspiration</span>
+                <Sparkles className="w-4 h-4 text-golden-400 animate-sparkle" />
               </div>
-              <p className="text-romance-800 font-script text-lg italic leading-relaxed mb-3">
+              <p className="text-sunset-800 font-script text-lg italic leading-relaxed mb-3">
                 "{currentQuote.quote}"
               </p>
               <div className="flex justify-between items-center">
-                <p className="text-right text-sm text-romance-600 font-medium">- {currentQuote.author}</p>
-                <div className="w-2 h-2 bg-romance-400 rounded-full animate-pulse"></div>
+                <p className="text-right text-sm text-sunset-600 font-medium">- {currentQuote.author}</p>
+                <div className="w-2 h-2 bg-sunset-400 rounded-full animate-pulse"></div>
               </div>
             </div>
           </Card>
@@ -175,12 +175,12 @@ const Index = () => {
             
             {/* No more cards message */}
             {currentCardIndex >= profiles.length && (
-              <Card className="absolute inset-0 glass-strong premium-shadow rounded-3xl flex items-center justify-center text-center p-8">
+              <Card className="absolute inset-0 glass-strong soft-shadow rounded-3xl flex items-center justify-center text-center p-8">
                 <div>
-                  <Heart className="w-16 h-16 text-romance-400 mx-auto mb-4 animate-float" />
-                  <h3 className="text-xl font-bold text-romance-700 mb-2">You've seen everyone nearby!</h3>
-                  <p className="text-romance-600 mb-4">Check back later for new connections</p>
-                  <Button onClick={() => setCurrentCardIndex(0)} className="aurora-gradient text-white">
+                  <Heart className="w-16 h-16 text-sunset-400 mx-auto mb-4 animate-float" />
+                  <h3 className="text-xl font-bold text-sunset-700 mb-2">You've seen everyone nearby!</h3>
+                  <p className="text-sunset-600 mb-4">Check back later for new connections</p>
+                  <Button onClick={() => setCurrentCardIndex(0)} className="sunset-gradient text-white">
                     Start Over
                   </Button>
                 </div>
@@ -191,60 +191,60 @@ const Index = () => {
           {/* Enhanced Quick Actions */}
           <QuickActions onAction={handleSwipe} />
 
-          {/* Premium Today's Connections */}
-          <Card className="mt-6 glass-strong premium-shadow floating-card">
+          {/* Elegant Today's Connections */}
+          <Card className="mt-6 glass-strong soft-shadow floating-card">
             <div className="p-5">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-2">
-                  <h3 className="font-bold text-romance-700">Today's Soul Connections</h3>
-                  <Sparkles className="w-4 h-4 text-yellow-400 animate-sparkle" />
+                  <h3 className="font-bold text-sunset-700">Today's Soul Connections</h3>
+                  <Sparkles className="w-4 h-4 text-golden-400 animate-sparkle" />
                 </div>
                 <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-romance-500 font-medium">3 new</span>
+                  <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse"></div>
+                  <span className="text-sm text-sunset-500 font-medium">3 new</span>
                 </div>
               </div>
               <div className="flex space-x-4">
                 {profiles.slice(0, 3).map((profile, index) => (
                   <div key={profile.id} className="flex-1 text-center group">
-                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-romance-200 to-romance-300 mx-auto mb-3 overflow-hidden floating-card group-hover:scale-110 transition-all duration-300">
+                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-sunset-200 to-rose-300 mx-auto mb-3 overflow-hidden floating-card group-hover:scale-110 transition-all duration-300">
                       <img 
                         src={profile.image} 
                         alt={profile.name}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute top-1 right-1">
-                        <div className="w-4 h-4 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-2 border-white animate-pulse"></div>
+                        <div className="w-4 h-4 bg-gradient-to-r from-rose-400 to-golden-500 rounded-full border-2 border-white animate-pulse"></div>
                       </div>
                       {profile.premium && (
                         <div className="absolute bottom-1 left-1">
-                          <Diamond className="w-3 h-3 text-yellow-400" />
+                          <Diamond className="w-3 h-3 text-golden-400" />
                         </div>
                       )}
                     </div>
-                    <p className="text-xs text-romance-600 font-bold">{profile.name}</p>
-                    <p className="text-xs text-romance-500">{profile.compatibility}% match</p>
+                    <p className="text-xs text-sunset-600 font-bold">{profile.name}</p>
+                    <p className="text-xs text-sunset-500">{profile.compatibility}% match</p>
                   </div>
                 ))}
               </div>
             </div>
           </Card>
 
-          {/* Premium Stats Card */}
-          <Card className="mt-4 glass-strong premium-shadow">
+          {/* Romantic Stats Card */}
+          <Card className="mt-4 glass-strong soft-shadow">
             <div className="p-4">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-romance-700 animate-pulse-slow">127</div>
-                  <div className="text-xs text-romance-500">Admirers</div>
+                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">127</div>
+                  <div className="text-xs text-sunset-500">Admirers</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-romance-700 animate-pulse-slow">23</div>
-                  <div className="text-xs text-romance-500">Matches</div>
+                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">23</div>
+                  <div className="text-xs text-sunset-500">Matches</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-romance-700 animate-pulse-slow">8</div>
-                  <div className="text-xs text-romance-500">Love Letters</div>
+                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">8</div>
+                  <div className="text-xs text-sunset-500">Love Letters</div>
                 </div>
               </div>
             </div>
