@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Heart, MessageCircle, User, Sparkles, Coffee, BookOpen, Crown, Zap, Settings } from "lucide-react";
+import { Heart, MessageCircle, User, Sparkles, Coffee, BookOpen, Crown, Zap, Settings, Diamond } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
