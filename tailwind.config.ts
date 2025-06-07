@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'sans': ['Inter', 'sans-serif'],
+				'script': ['Dancing Script', 'cursive'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,15 +57,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				romance: {
+					50: '#fdf2f8',
+					100: '#fce7f3',
+					200: '#fbcfe8',
+					300: '#f9a8d4',
+					400: '#f472b6',
+					500: '#ec4899',
+					600: '#db2777',
+					700: '#be185d',
+					800: '#9d174d',
+					900: '#831843',
 				}
 			},
 			borderRadius: {
@@ -84,11 +91,40 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'heart-beat': {
+					'0%, 100%': {
+						transform: 'scale(1)',
+					},
+					'50%': {
+						transform: 'scale(1.1)',
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)',
+					},
+					'50%': {
+						transform: 'translateY(-10px)',
+					}
+				},
+				'sparkle': {
+					'0%, 100%': {
+						opacity: '0.4',
+						transform: 'scale(0.8)',
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'scale(1.2)',
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'heart-beat': 'heart-beat 1.5s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'sparkle': 'sparkle 2s ease-in-out infinite',
 			}
 		}
 	},
