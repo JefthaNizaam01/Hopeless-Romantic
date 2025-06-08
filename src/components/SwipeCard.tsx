@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Heart, X, Star, MapPin, Sparkles, Shield, Diamond } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface Profile {
   id: number;
