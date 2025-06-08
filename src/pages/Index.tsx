@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from "react";
-import { Heart, MessageCircle, User, Sparkles, Coffee, BookOpen, Crown, Zap, Settings, Diamond } from "lucide-react";
+import { Heart, Settings, Zap, Crown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -29,7 +28,7 @@ const Index = () => {
         "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop",
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=600&fit=crop"
       ],
-      bio: "Believer in serendipity and late-night conversations under the stars ✨ Looking for someone who writes love letters and believes in fairy tales",
+      bio: "Believer in serendipity and late-night conversations under the stars. Looking for someone who writes love letters and believes in fairy tales.",
       interests: ["Poetry", "Vintage Books", "Sunset Photography", "Classical Music", "Art Galleries"],
       romanticStyle: "Classic Romantic",
       loveLanguage: "Words of Affirmation",
@@ -51,7 +50,7 @@ const Index = () => {
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop",
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop"
       ],
-      bio: "Writing love letters is an art form. Looking for my muse 💕 Believer in grand gestures and meaningful connections",
+      bio: "Writing love letters is an art form. Looking for my muse. Believer in grand gestures and meaningful connections.",
       interests: ["Classic Literature", "Jazz Music", "Handwritten Letters", "Wine Tasting", "Philosophy"],
       romanticStyle: "Old Soul",
       loveLanguage: "Quality Time",
@@ -72,7 +71,7 @@ const Index = () => {
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=600&fit=crop",
         "https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=400&h=600&fit=crop"
       ],
-      bio: "Dancing in the rain and believing in fairy tale endings 🌙 Life is a beautiful story waiting to be written together",
+      bio: "Dancing in the rain and believing in fairy tale endings. Life is a beautiful story waiting to be written together.",
       interests: ["Ballet", "Stargazing", "Romantic Movies", "Cooking", "Travel"],
       romanticStyle: "Dreamy Romantic",
       loveLanguage: "Physical Touch",
@@ -95,164 +94,131 @@ const Index = () => {
     }
   };
 
-  const loveQuotes = [
-    { quote: "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage.", author: "Lao Tzu" },
-    { quote: "Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day.", author: "Unknown" },
-    { quote: "In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine.", author: "Maya Angelou" },
-  ];
-
-  const currentQuote = loveQuotes[Math.floor(Math.random() * loveQuotes.length)];
-
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Soft Romantic Background */}
-      <div className="fixed inset-0 particle-bg">
-        <div className="absolute inset-0 poetry-gradient opacity-30"></div>
-      </div>
-
-      {/* Elegant Header */}
-      <div className="sticky top-0 z-50 glass-strong backdrop-blur-xl border-b border-white/30">
-        <div className="flex items-center justify-between p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Header */}
+      <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100">
+        <div className="flex items-center justify-between p-4 max-w-md mx-auto">
           <div className="flex items-center space-x-3">
-            <div className="relative pulse-ring">
-              <Heart className="w-8 h-8 text-sunset-500 animate-heart-beat fill-current" />
+            <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-red-500 rounded-xl flex items-center justify-center">
+              <Heart className="w-6 h-6 text-white fill-current" />
             </div>
             <div>
-              <h1 className="text-2xl font-script font-bold text-shimmer">Hopeless Romantic</h1>
-              <p className="text-xs text-sunset-600 opacity-80">Good {timeOfDay}, find your soulmate</p>
+              <h1 className="text-xl font-bold text-gray-900">Hopeless Romantic</h1>
+              <p className="text-sm text-gray-500">Good {timeOfDay}</p>
             </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <Button variant="ghost" size="sm" className="glass rounded-full p-2 warm-glow">
-              <Crown className="w-5 h-5 text-golden-500" />
+          <div className="flex items-center space-x-2">
+            <Button variant="ghost" size="sm" className="w-10 h-10 rounded-full">
+              <Crown className="w-5 h-5 text-yellow-500" />
             </Button>
-            <Button variant="ghost" size="sm" className="glass rounded-full p-2">
-              <Settings className="w-5 h-5 text-sunset-600" />
+            <Button variant="ghost" size="sm" className="w-10 h-10 rounded-full">
+              <Zap className="w-5 h-5 text-blue-500" />
             </Button>
-            <Button variant="ghost" size="sm" className="glass rounded-full p-2">
-              <Zap className="w-5 h-5 text-poetry-400" />
+            <Button variant="ghost" size="sm" className="w-10 h-10 rounded-full">
+              <Settings className="w-5 h-5 text-gray-500" />
             </Button>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-4 pb-20 relative z-10">
-        <div className="max-w-sm mx-auto">
-          {/* Poetic Daily Quote Card */}
-          <Card className="mb-6 glass-strong soft-shadow floating-card gradient-border particle-bg">
-            <div className="p-5">
-              <div className="flex items-center space-x-2 mb-3">
-                <BookOpen className="w-5 h-5 text-sunset-600 animate-float" />
-                <span className="text-sm font-bold text-sunset-700">Daily Love Inspiration</span>
-                <Sparkles className="w-4 h-4 text-golden-400 animate-sparkle" />
-              </div>
-              <p className="text-sunset-800 font-script text-lg italic leading-relaxed mb-3">
-                "{currentQuote.quote}"
+      <div className="flex-1 p-4 pb-24 max-w-md mx-auto">
+        {/* Daily Quote Card */}
+        <Card className="mb-6 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-0 shadow-sm">
+          <div className="flex items-start space-x-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-5 h-5 text-blue-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900 mb-2">Daily Inspiration</h3>
+              <p className="text-gray-700 text-sm leading-relaxed italic">
+                "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage."
               </p>
-              <div className="flex justify-between items-center">
-                <p className="text-right text-sm text-sunset-600 font-medium">- {currentQuote.author}</p>
-                <div className="w-2 h-2 bg-sunset-400 rounded-full animate-pulse"></div>
-              </div>
+              <p className="text-gray-500 text-xs mt-2">— Lao Tzu</p>
             </div>
-          </Card>
-
-          {/* Enhanced Swipe Cards */}
-          <div className="relative h-[600px] mb-6">
-            {profiles.map((profile, index) => (
-              <SwipeCard
-                key={profile.id}
-                profile={profile}
-                isActive={index === currentCardIndex}
-                onSwipe={handleSwipe}
-                style={{
-                  zIndex: profiles.length - index,
-                  transform: `translateY(${(index - currentCardIndex) * 8}px) scale(${1 - (index - currentCardIndex) * 0.03}) rotateY(${(index - currentCardIndex) * 2}deg)`,
-                  opacity: index <= currentCardIndex + 2 ? 1 - (index - currentCardIndex) * 0.2 : 0,
-                }}
-              />
-            ))}
-            
-            {/* No more cards message */}
-            {currentCardIndex >= profiles.length && (
-              <Card className="absolute inset-0 glass-strong soft-shadow rounded-3xl flex items-center justify-center text-center p-8">
-                <div>
-                  <Heart className="w-16 h-16 text-sunset-400 mx-auto mb-4 animate-float" />
-                  <h3 className="text-xl font-bold text-sunset-700 mb-2">You've seen everyone nearby!</h3>
-                  <p className="text-sunset-600 mb-4">Check back later for new connections</p>
-                  <Button onClick={() => setCurrentCardIndex(0)} className="sunset-gradient text-white">
-                    Start Over
-                  </Button>
-                </div>
-              </Card>
-            )}
           </div>
+        </Card>
 
-          {/* Enhanced Quick Actions */}
-          <QuickActions onAction={handleSwipe} />
-
-          {/* Elegant Today's Connections */}
-          <Card className="mt-6 glass-strong soft-shadow floating-card">
-            <div className="p-5">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-2">
-                  <h3 className="font-bold text-sunset-700">Today's Soul Connections</h3>
-                  <Sparkles className="w-4 h-4 text-golden-400 animate-sparkle" />
+        {/* Swipe Cards */}
+        <div className="relative h-[600px] mb-6">
+          {profiles.map((profile, index) => (
+            <SwipeCard
+              key={profile.id}
+              profile={profile}
+              isActive={index === currentCardIndex}
+              onSwipe={handleSwipe}
+              style={{
+                zIndex: profiles.length - index,
+                transform: `translateY(${(index - currentCardIndex) * 4}px) scale(${1 - (index - currentCardIndex) * 0.02})`,
+                opacity: index <= currentCardIndex + 2 ? 1 - (index - currentCardIndex) * 0.15 : 0,
+              }}
+            />
+          ))}
+          
+          {/* No more cards message */}
+          {currentCardIndex >= profiles.length && (
+            <Card className="absolute inset-0 flex items-center justify-center text-center p-8 bg-white shadow-lg rounded-2xl">
+              <div>
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Heart className="w-8 h-8 text-gray-400" />
                 </div>
-                <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-sunset-500 font-medium">3 new</span>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">You've seen everyone nearby!</h3>
+                <p className="text-gray-600 mb-6">Check back later for new connections</p>
+                <Button onClick={() => setCurrentCardIndex(0)} className="btn-primary">
+                  Start Over
+                </Button>
               </div>
-              <div className="flex space-x-4">
-                {profiles.slice(0, 3).map((profile, index) => (
-                  <div key={profile.id} className="flex-1 text-center group">
-                    <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-sunset-200 to-rose-300 mx-auto mb-3 overflow-hidden floating-card group-hover:scale-110 transition-all duration-300">
-                      <img 
-                        src={profile.image} 
-                        alt={profile.name}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-1 right-1">
-                        <div className="w-4 h-4 bg-gradient-to-r from-rose-400 to-golden-500 rounded-full border-2 border-white animate-pulse"></div>
-                      </div>
-                      {profile.premium && (
-                        <div className="absolute bottom-1 left-1">
-                          <Diamond className="w-3 h-3 text-golden-400" />
-                        </div>
-                      )}
-                    </div>
-                    <p className="text-xs text-sunset-600 font-bold">{profile.name}</p>
-                    <p className="text-xs text-sunset-500">{profile.compatibility}% match</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Card>
-
-          {/* Romantic Stats Card */}
-          <Card className="mt-4 glass-strong soft-shadow">
-            <div className="p-4">
-              <div className="grid grid-cols-3 gap-4 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">127</div>
-                  <div className="text-xs text-sunset-500">Admirers</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">23</div>
-                  <div className="text-xs text-sunset-500">Matches</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-sunset-700 animate-pulse-slow">8</div>
-                  <div className="text-xs text-sunset-500">Love Letters</div>
-                </div>
-              </div>
-            </div>
-          </Card>
+            </Card>
+          )}
         </div>
+
+        {/* Quick Actions */}
+        <QuickActions onAction={handleSwipe} />
+
+        {/* Today's Connections */}
+        <Card className="mt-6 p-6 bg-white shadow-sm border-0">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold text-gray-900">Today's Connections</h3>
+            <span className="text-sm text-gray-500">3 new</span>
+          </div>
+          <div className="flex space-x-4">
+            {profiles.slice(0, 3).map((profile, index) => (
+              <div key={profile.id} className="flex-1 text-center">
+                <div className="relative w-16 h-16 rounded-2xl bg-gray-100 mx-auto mb-2 overflow-hidden">
+                  <img 
+                    src={profile.image} 
+                    alt={profile.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-1 right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+                </div>
+                <p className="text-sm font-medium text-gray-900">{profile.name}</p>
+                <p className="text-xs text-gray-500">{profile.compatibility}% match</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {/* Stats Card */}
+        <Card className="mt-4 p-4 bg-white shadow-sm border-0">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <div className="text-2xl font-bold text-gray-900">127</div>
+              <div className="text-xs text-gray-500">Admirers</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gray-900">23</div>
+              <div className="text-xs text-gray-500">Matches</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gray-900">8</div>
+              <div className="text-xs text-gray-500">Messages</div>
+            </div>
+          </div>
+        </Card>
       </div>
 
-      {/* Enhanced Bottom Navigation */}
       <Navigation />
     </div>
   );

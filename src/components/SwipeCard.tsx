@@ -1,6 +1,5 @@
-
 import { useState } from "react";
-import { Heart, X, Star, MapPin, Sparkles, Camera, Music, Book, Coffee, Diamond, Shield } from "lucide-react";
+import { Heart, X, Star, MapPin, Sparkles, Shield, Diamond } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -73,14 +72,16 @@ const SwipeCard = ({ profile, isActive, onSwipe, style }: SwipeCardProps) => {
     }
   };
 
-  const rotation = currentX * 0.1;
-  const opacity = 1 - Math.abs(currentX) / 300;
+  const rotation = currentX * 0.05;
+  const opacity = 1 - Math.abs(currentX) / 400;
 
   return (
     <Card
-      className={`absolute inset-0 overflow-hidden cursor-grab glass-strong premium-shadow rounded-3xl ${
-        isDragging ? 'cursor-grabbing' : ''
-      } ${isActive ? 'pointer-events-auto' : 'pointer-events-none'} particle-bg floating-card`}
+      className={cn(
+        "absolute inset-0 overflow-hidden cursor-grab bg-white border-0 shadow-xl rounded-2xl",
+        isDragging ? 'cursor-grabbing' : '',
+        isActive ? 'pointer-events-auto' : 'pointer-events-none'
+      )}
       style={{
         transform: `translateX(${currentX}px) rotate(${rotation}deg)`,
         opacity: opacity,
@@ -94,19 +95,16 @@ const SwipeCard = ({ profile, isActive, onSwipe, style }: SwipeCardProps) => {
       onTouchMove={(e) => handleMove(e.touches[0].clientX)}
       onTouchEnd={handleEnd}
     >
-      {/* Profile Image with Parallax Effect */}
+      {/* Profile Image */}
       <div className="relative h-2/3 overflow-hidden">
         <div 
-          className="w-full h-full relative transition-transform duration-500 ease-out"
+          className="w-full h-full relative transition-transform duration-300"
           onClick={handleImageClick}
-          style={{
-            transform: `scale(${1 + Math.abs(currentX) / 1000})`,
-          }}
         >
           <img
             src={images[currentImageIndex]}
             alt={profile.name}
-            className="w-full h-full object-cover transition-all duration-700"
+            className="w-full h-full object-cover"
           />
           
           {/* Image indicators */}
@@ -115,9 +113,10 @@ const SwipeCard = ({ profile, isActive, onSwipe, style }: SwipeCardProps) => {
               {images.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-8 h-1 rounded-full transition-all duration-300 ${
+                  className={cn(
+                    "w-8 h-1 rounded-full transition-all duration-300",
                     index === currentImageIndex ? 'bg-white' : 'bg-white/40'
-                  }`}
+                  )}
                 />
               ))}
             </div>
@@ -127,63 +126,64 @@ const SwipeCard = ({ profile, isActive, onSwipe, style }: SwipeCardProps) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
         
-        {/* Premium Badge */}
-        {profile.premium && (
-          <div className="absolute top-4 left-4 glass neon-glow rounded-full p-2">
-            <Diamond className="w-4 h-4 text-yellow-400 animate-pulse" />
-          </div>
-        )}
-        
-        {/* Verified Badge */}
-        {profile.verified && (
-          <div className="absolute top-4 left-16 glass rounded-full p-2">
-            <Shield className="w-4 h-4 text-blue-400" />
-          </div>
-        )}
+        {/* Badges */}
+        <div className="absolute top-4 left-4 flex space-x-2">
+          {profile.premium && (
+            <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-2 py-1 rounded-full flex items-center space-x-1">
+              <Diamond className="w-3 h-3" />
+              <span className="text-xs font-semibold">Premium</span>
+            </div>
+          )}
+          
+          {profile.verified && (
+            <div className="bg-blue-500 text-white px-2 py-1 rounded-full flex items-center space-x-1">
+              <Shield className="w-3 h-3" />
+              <span className="text-xs font-semibold">Verified</span>
+            </div>
+          )}
+        </div>
 
-        {/* Compatibility Score with Animation */}
-        <div className="absolute top-4 right-4 glass-strong rounded-2xl p-3 pulse-ring">
-          <div className="flex items-center space-x-2">
-            <Star className="w-5 h-5 text-yellow-400 fill-current animate-spin-slow" />
-            <span className="text-sm font-bold text-white text-shimmer">{profile.compatibility}%</span>
+        {/* Compatibility Score */}
+        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2">
+          <div className="flex items-center space-x-1">
+            <Star className="w-4 h-4 text-yellow-500 fill-current" />
+            <span className="text-sm font-bold text-gray-800">{profile.compatibility}%</span>
           </div>
         </div>
 
-        {/* Swipe Indicators with Enhanced Effects */}
+        {/* Swipe Indicators */}
         {currentX > 50 && (
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/30 to-emerald-500/30 flex items-center justify-center backdrop-blur-sm">
-            <div className="bg-gradient-to-r from-green-400 to-emerald-500 text-white p-6 rounded-full neon-glow animate-bounce-slow">
-              <Heart className="w-10 h-10 fill-current" />
+          <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center backdrop-blur-sm">
+            <div className="bg-green-500 text-white p-4 rounded-full">
+              <Heart className="w-8 h-8 fill-current" />
             </div>
           </div>
         )}
         
         {currentX < -50 && (
-          <div className="absolute inset-0 bg-gradient-to-r from-red-500/30 to-pink-500/30 flex items-center justify-center backdrop-blur-sm">
-            <div className="bg-gradient-to-r from-red-400 to-pink-500 text-white p-6 rounded-full animate-bounce-slow">
-              <X className="w-10 h-10" />
+          <div className="absolute inset-0 bg-red-500/20 flex items-center justify-center backdrop-blur-sm">
+            <div className="bg-red-500 text-white p-4 rounded-full">
+              <X className="w-8 h-8" />
             </div>
           </div>
         )}
       </div>
 
-      {/* Enhanced Profile Info */}
-      <div className="p-6 h-1/3 overflow-y-auto glass backdrop-blur-xl">
-        <div className="flex items-start justify-between mb-4">
+      {/* Profile Info */}
+      <div className="p-6 h-1/3 overflow-y-auto bg-white">
+        <div className="flex items-start justify-between mb-3">
           <div className="flex-1">
-            <div className="flex items-center space-x-2 mb-2">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-romance-700 to-romance-900 bg-clip-text text-transparent">
-                {profile.name}
-              </h2>
-              <span className="text-xl text-romance-600">{profile.age}</span>
+            <div className="flex items-center space-x-2 mb-1">
+              <h2 className="text-2xl font-bold text-gray-900">{profile.name}</h2>
+              <span className="text-xl text-gray-600">{profile.age}</span>
               {profile.zodiacSign && (
-                <Badge variant="outline" className="gradient-border text-xs">
-                  ♈ {profile.zodiacSign}
+                <Badge variant="outline" className="text-xs border-gray-200">
+                  {profile.zodiacSign}
                 </Badge>
               )}
             </div>
             
-            <div className="flex items-center text-romance-600 text-sm mb-2">
+            <div className="flex items-center text-gray-500 text-sm mb-2">
               <MapPin className="w-4 h-4 mr-1" />
               <span>2 miles away</span>
               {profile.height && (
@@ -195,64 +195,56 @@ const SwipeCard = ({ profile, isActive, onSwipe, style }: SwipeCardProps) => {
             </div>
             
             {profile.job && (
-              <div className="text-sm text-romance-600 mb-2">
+              <div className="text-sm text-gray-600 mb-1">
                 💼 {profile.job}
               </div>
             )}
             
             {profile.education && (
-              <div className="text-sm text-romance-600 mb-2">
+              <div className="text-sm text-gray-600 mb-3">
                 🎓 {profile.education}
               </div>
             )}
           </div>
           
-          <div className="text-right">
-            <Badge variant="secondary" className="aurora-gradient text-white mb-2 animate-glow">
-              {profile.romanticStyle}
-            </Badge>
-          </div>
+          <Badge className="bg-primary/10 text-primary border-primary/20">
+            {profile.romanticStyle}
+          </Badge>
         </div>
 
-        <p className="text-romance-700 mb-4 text-sm leading-relaxed font-medium">
+        <p className="text-gray-700 mb-4 text-sm leading-relaxed">
           {profile.bio}
         </p>
 
         <div className="space-y-3">
-          <div className="glass rounded-lg p-3">
-            <span className="text-xs font-bold text-romance-600 uppercase tracking-wide flex items-center">
+          <div className="bg-gray-50 rounded-lg p-3">
+            <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide flex items-center mb-2">
               <Sparkles className="w-3 h-3 mr-1" />
               Love Language
             </span>
-            <p className="text-sm text-romance-700 font-medium mt-1">{profile.loveLanguage}</p>
+            <p className="text-sm text-gray-800 font-medium">{profile.loveLanguage}</p>
           </div>
           
-          <div className="glass rounded-lg p-3">
-            <span className="text-xs font-bold text-romance-600 uppercase tracking-wide flex items-center mb-2">
+          <div className="bg-gray-50 rounded-lg p-3">
+            <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide flex items-center mb-2">
               <Heart className="w-3 h-3 mr-1" />
               Interests
             </span>
-            <div className="flex flex-wrap gap-2">
-              {profile.interests.map((interest, index) => {
-                const getIcon = (interest: string) => {
-                  if (interest.toLowerCase().includes('music')) return <Music className="w-3 h-3" />;
-                  if (interest.toLowerCase().includes('book') || interest.toLowerCase().includes('read')) return <Book className="w-3 h-3" />;
-                  if (interest.toLowerCase().includes('photo') || interest.toLowerCase().includes('camera')) return <Camera className="w-3 h-3" />;
-                  if (interest.toLowerCase().includes('coffee')) return <Coffee className="w-3 h-3" />;
-                  return <Sparkles className="w-3 h-3" />;
-                };
-                
-                return (
-                  <Badge 
-                    key={index} 
-                    variant="outline" 
-                    className="glass text-xs border-romance-300 text-romance-700 hover:aurora-gradient hover:text-white transition-all duration-300 flex items-center space-x-1"
-                  >
-                    {getIcon(interest)}
-                    <span>{interest}</span>
-                  </Badge>
-                );
-              })}
+            <div className="flex flex-wrap gap-1">
+              {profile.interests.slice(0, 4).map((interest, index) => (
+                <Badge 
+                  key={index} 
+                  variant="outline" 
+                  className="text-xs border-gray-200 text-gray-600 hover:bg-gray-100"
+                >
+                  {interest}
+                </Badge>
+              ))}
+              {profile.interests.length > 4 && (
+                <Badge variant="outline" className="text-xs border-gray-200 text-gray-500">
+                  +{profile.interests.length - 4} more
+                </Badge>
+              )}
             </div>
           </div>
         </div>

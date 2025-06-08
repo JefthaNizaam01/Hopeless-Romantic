@@ -1,5 +1,4 @@
-
-import { Heart, MessageCircle, User, Compass, Sparkles, Crown } from "lucide-react";
+import { Heart, MessageCircle, User, Compass, Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -15,8 +14,8 @@ const Navigation = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 glass-strong backdrop-blur-xl border-t border-white/20 z-50">
-      <div className="flex justify-around items-center py-3 px-2">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-t border-gray-200">
+      <div className="flex justify-around items-center py-2 px-4 max-w-md mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -26,33 +25,24 @@ const Navigation = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "flex flex-col items-center p-3 rounded-2xl transition-all duration-300 relative",
+                "flex flex-col items-center p-3 rounded-xl transition-all duration-200 min-w-0",
                 isActive 
-                  ? "text-white aurora-gradient neon-glow scale-110" 
-                  : "text-gray-400 hover:text-romance-500 glass hover:bg-white/10"
+                  ? "text-primary bg-primary/5" 
+                  : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
               )}
             >
-              {isActive && (
-                <div className="absolute inset-0 aurora-gradient rounded-2xl animate-pulse opacity-20"></div>
-              )}
               <Icon 
                 className={cn(
-                  "w-6 h-6 mb-1 relative z-10",
-                  isActive && item.label === "Home" && "animate-heart-beat",
-                  isActive && "drop-shadow-lg"
+                  "w-5 h-5 mb-1",
+                  isActive && "text-primary"
                 )} 
               />
               <span className={cn(
-                "text-xs font-medium relative z-10",
-                isActive && "font-bold text-shadow"
+                "text-xs font-medium truncate",
+                isActive ? "text-primary font-semibold" : "text-gray-500"
               )}>
                 {item.label}
               </span>
-              
-              {/* Premium indicator for some items */}
-              {(item.label === "Matches" || item.label === "Messages") && (
-                <Crown className="w-3 h-3 text-yellow-400 absolute -top-1 -right-1 animate-sparkle" />
-              )}
             </Link>
           );
         })}
